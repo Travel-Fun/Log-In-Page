@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(https://t3.ftcdn.net/jpg/01/09/34/68/360_F_109346875_5b4LcQASlCXQpQ1hTD8lC55n3RLA9RT5.jpg);
+        }
+        * { box-sizing: border-box; }
+        h2 { text-align: center; margin-top: 10%; margin-bottom: 15%; }
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .hidden { display: none; }
+        .login-form {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin: auto;
+            margin-bottom: 20px;
+            border: 3px solid #f1f1f1;
+            border-radius: 10px;
+            width: 400px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 9;
+            height: 450px;
+        }
+        .submit { margin-top: 30px; }
+        .exit-btn { float: right; }
+
+        .login-form p {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .login-form label p {
+            margin: 10px 0 5px 10px;
+        }
+
+        .login-form input[type=text], .login-form input[type=password] {
+            border-radius: 10px;
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        .login-form input[type=text]:focus, .login-form input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        .login-form .btn {
+            border-radius: 10px;
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom:10px;
+            opacity: 0.8;
+        }
+
+        .login-form .btn:hover{ opacity: 1; }
+    </style>
+    <script>
+        function toggleForm() {
+            if (document.getElementById("signinForm").style.display == "block")
+                document.getElementById("signinForm").style.display = "none";
+            else document.getElementById("signinForm").style.display = "block";
+            document.getElementById("signupForm").style.display = "none";
+        }
+
+        function signupForm() {
+            document.getElementById("signinForm").style.display = "none";
+            document.getElementById("signupForm").style.display = "block";
+        }
+
+        window.onload = function(){
+            document.getElementById("login-exit").onclick = function(){
+                document.getElementById("signinForm").style.display = "none";
+            }
+            document.getElementById("signup-exit").onclick = function(){
+                document.getElementById("signupForm").style.display = "none";
+                document.getElementById("signinForm").style.display = "block";
+            }
+        }
+
+        function loginSubmitForm() {
+            console.log("login button pressed.")
+        }
+
+        function signupSubmitForm() {
+            console.log("signup button pressed.")
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="toggleForm()">toggle</button>
+    <form class="login-form" id="signinForm" style="display: block;">
+        <img class="exit-btn" src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/__geKiQnSG-.png" alt width="24" height="24" id="login-exit">
+        <h2>Sign in to Travel-Fun</h2>
+        <input type="text" name="email" placeholder="Email" required>
+        <input type="password" name="psw" placeholder="Password" required>
+        <button type="button" class="btn submit" onclick="loginSubmitForm()">Login</button>
+        <p style="right:10px;bottom: 10px; position: fixed;">New to here? <a onclick="signupForm()"">Create an account</a>.</p>
+    </form>
+    <form class="login-form hidden" id="signupForm">
+        <img class="exit-btn" src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/__geKiQnSG-.png" alt width="24" height="24" id="signup-exit">
+        <h2>Welcome to Travel-Fun</h2>
+        <input type="text" name="email" placeholder="Email" required>
+        <input type="password" name="psw" placeholder="Password" required>
+        <input type="password" name="psw" placeholder="Password again" required>
+        <button type="button" class="btn submit" onclick="signupSubmitForm()">Sign up</button>
+    </form>
+</body>
+</html>
